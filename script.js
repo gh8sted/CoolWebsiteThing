@@ -29,11 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.category-header').forEach(header => {
         const toggle = header.querySelector('.category-toggle');
         const content = header.nextElementSibling;
+        const category = header.parentElement;
         
         // Add collapsed class to toggle by default
         toggle.classList.add('collapsed');
         
         header.addEventListener('click', () => {
+            category.classList.toggle('expanded');
             content.classList.toggle('expanded');
             toggle.classList.toggle('collapsed');
         });
