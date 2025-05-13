@@ -12,10 +12,10 @@
         <div class="nav-content">
             <h1>Underfighters 2</h1>
             <div class="nav-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Items</a>
-                <a href="#" class="nav-link">Bosses</a>
-                <a href="#" class="nav-link">Guides</a>
+                <a href="#" class="nav-link filter-active" data-filter="all">All</a>
+                <a href="#" class="nav-link" data-filter="items">Items</a>
+                <a href="#" class="nav-link" data-filter="bosses">Bosses</a>
+                <a href="#" class="nav-link" data-filter="guides">Guides</a>
             </div>
             <button id="theme-toggle" class="theme-toggle">
                 <i class="fas fa-sun"></i>
@@ -27,47 +27,83 @@
         <h2 class="wiki-title">Underfighters 2 Wiki</h2>
         
         <div class="wiki-container">
-            <div class="category">
-                <div class="category-header">First Slot Items</div>
-                <div class="item-list">
-                    <div class="wiki-item">Basic Sword</div>
-                    <div class="wiki-item">Iron Dagger</div>
-                    <div class="wiki-item">Steel Blade</div>
-                    <div class="wiki-item">Magic Staff</div>
+            <div class="category" data-type="items">
+                <div class="category-header">
+                    <span>First Slot Items</span>
+                    <i class="fas fa-chevron-down category-toggle"></i>
+                </div>
+                <div class="category-content">
+                    <div class="item-list">
+                        <div class="wiki-item" data-item='{"name": "Basic Sword", "description": "A simple but reliable weapon for beginners. Deals moderate damage and has good durability.", "image": "https://via.placeholder.com/200x200?text=Basic+Sword"}'>Basic Sword</div>
+                        <div class="wiki-item" data-item='{"name": "Iron Dagger", "description": "A quick and agile weapon. Perfect for fast-paced combat and critical hits.", "image": "https://via.placeholder.com/200x200?text=Iron+Dagger"}'>Iron Dagger</div>
+                        <div class="wiki-item" data-item='{"name": "Steel Blade", "description": "A well-balanced weapon with good damage output and durability.", "image": "https://via.placeholder.com/200x200?text=Steel+Blade"}'>Steel Blade</div>
+                        <div class="wiki-item" data-item='{"name": "Magic Staff", "description": "A powerful magical weapon that enhances spell casting abilities.", "image": "https://via.placeholder.com/200x200?text=Magic+Staff"}'>Magic Staff</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="category">
-                <div class="category-header">Second Slot Items</div>
-                <div class="item-list">
-                    <div class="wiki-item">Wooden Shield</div>
-                    <div class="wiki-item">Leather Armor</div>
-                    <div class="wiki-item">Chain Mail</div>
-                    <div class="wiki-item">Magic Ring</div>
+            <div class="category" data-type="items">
+                <div class="category-header">
+                    <span>Second Slot Items</span>
+                    <i class="fas fa-chevron-down category-toggle"></i>
+                </div>
+                <div class="category-content">
+                    <div class="item-list">
+                        <div class="wiki-item" data-item='{"name": "Wooden Shield", "description": "Basic defensive equipment that provides moderate protection.", "image": "https://via.placeholder.com/200x200?text=Wooden+Shield"}'>Wooden Shield</div>
+                        <div class="wiki-item" data-item='{"name": "Leather Armor", "description": "Light and flexible armor that offers basic protection without hindering movement.", "image": "https://via.placeholder.com/200x200?text=Leather+Armor"}'>Leather Armor</div>
+                        <div class="wiki-item" data-item='{"name": "Chain Mail", "description": "Medium-weight armor that provides good protection against physical attacks.", "image": "https://via.placeholder.com/200x200?text=Chain+Mail"}'>Chain Mail</div>
+                        <div class="wiki-item" data-item='{"name": "Magic Ring", "description": "Enhances magical abilities and provides minor stat bonuses.", "image": "https://via.placeholder.com/200x200?text=Magic+Ring"}'>Magic Ring</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="category">
-                <div class="category-header">Normal Bosses</div>
-                <div class="item-list">
-                    <div class="wiki-item">Forest Guardian</div>
-                    <div class="wiki-item">Cave Troll</div>
-                    <div class="wiki-item">Desert Wraith</div>
-                    <div class="wiki-item">Mountain Giant</div>
+            <div class="category" data-type="bosses">
+                <div class="category-header">
+                    <span>Normal Bosses</span>
+                    <i class="fas fa-chevron-down category-toggle"></i>
+                </div>
+                <div class="category-content">
+                    <div class="item-list">
+                        <div class="wiki-item" data-item='{"name": "Forest Guardian", "description": "A mystical being that protects the ancient forest. Uses nature-based attacks.", "image": "https://via.placeholder.com/200x200?text=Forest+Guardian"}'>Forest Guardian</div>
+                        <div class="wiki-item" data-item='{"name": "Cave Troll", "description": "A massive creature that dwells in deep caves. Known for its brute strength.", "image": "https://via.placeholder.com/200x200?text=Cave+Troll"}'>Cave Troll</div>
+                        <div class="wiki-item" data-item='{"name": "Desert Wraith", "description": "A ghostly entity that haunts the desert. Can manipulate sand and wind.", "image": "https://via.placeholder.com/200x200?text=Desert+Wraith"}'>Desert Wraith</div>
+                        <div class="wiki-item" data-item='{"name": "Mountain Giant", "description": "An ancient giant that guards the mountain peaks. Extremely durable.", "image": "https://via.placeholder.com/200x200?text=Mountain+Giant"}'>Mountain Giant</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="category">
-                <div class="category-header">Special Items</div>
-                <div class="item-list">
-                    <div class="wiki-item">Ancient Relic</div>
-                    <div class="wiki-item">Mystic Orb</div>
-                    <div class="wiki-item">Legendary Key</div>
-                    <div class="wiki-item">Cursed Amulet</div>
+            <div class="category" data-type="items">
+                <div class="category-header">
+                    <span>Special Items</span>
+                    <i class="fas fa-chevron-down category-toggle"></i>
+                </div>
+                <div class="category-content">
+                    <div class="item-list">
+                        <div class="wiki-item" data-item='{"name": "Ancient Relic", "description": "A mysterious artifact with unknown powers. Said to be from a forgotten civilization.", "image": "https://via.placeholder.com/200x200?text=Ancient+Relic"}'>Ancient Relic</div>
+                        <div class="wiki-item" data-item='{"name": "Mystic Orb", "description": "A powerful magical item that enhances all magical abilities.", "image": "https://via.placeholder.com/200x200?text=Mystic+Orb"}'>Mystic Orb</div>
+                        <div class="wiki-item" data-item='{"name": "Legendary Key", "description": "A key that opens the door to legendary treasures. Very rare.", "image": "https://via.placeholder.com/200x200?text=Legendary+Key"}'>Legendary Key</div>
+                        <div class="wiki-item" data-item='{"name": "Cursed Amulet", "description": "A powerful but dangerous item. Grants great power at a cost.", "image": "https://via.placeholder.com/200x200?text=Cursed+Amulet"}'>Cursed Amulet</div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Item Popup -->
+    <div class="popup-overlay">
+        <div class="popup">
+            <div class="popup-header">
+                <h3 class="popup-title"></h3>
+                <button class="popup-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-content">
+                <img class="popup-image" src="" alt="">
+                <div class="popup-description"></div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>Underfighters 2 Wiki - Made with ❤️ by Martim</p>

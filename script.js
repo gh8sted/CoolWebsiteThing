@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     const icon = themeToggle.querySelector('i');
+    const popupOverlay = document.querySelector('.popup-overlay');
+    const popup = document.querySelector('.popup');
+    const popupTitle = document.querySelector('.popup-title');
+    const popupImage = document.querySelector('.popup-image');
+    const popupDescription = document.querySelector('.popup-description');
+    const popupClose = document.querySelector('.popup-close');
 
     // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme');
@@ -19,20 +25,75 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.classList.toggle('fa-moon');
     });
 
-    // Wiki item interaction
-    const wikiItems = document.querySelectorAll('.wiki-item');
-    wikiItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Add a subtle animation when clicked
-            item.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                item.style.transform = '';
-            }, 100);
-
-            // Here you can add functionality to show item details
-            // For now, we'll just log the item name
-            console.log('Selected item:', item.textContent);
+    // Category toggle functionality
+    document.querySelectorAll('.category-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.category-toggle');
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
         });
+    });
+
+    // Wiki item interaction
+    document.querySelectorAll('.wiki-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const itemData = JSON.parse(item.dataset.item);
+            
+            // Update popup content
+            popupTitle.textContent = itemData.name;
+            popupImage.src = itemData.image;
+            popupImage.alt = itemData.name;
+            popupDescription.textContent = itemData.description;
+            
+            // Show popup
+            popupOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close popup
+    popupClose.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    // Close popup when clicking outside
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Filter functionality
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Update active state
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('filter-active'));
+            link.classList.add('filter-active');
+            
+            const filter = link.dataset.filter;
+            const categories = document.querySelectorAll('.category');
+            
+            categories.forEach(category => {
+                if (filter === 'all' || category.dataset.type === filter) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+            popupOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
     });
 
     // Smooth scrolling for navigation

@@ -233,4 +233,120 @@ footer {
         width: 100%;
         max-width: 100%;
     }
+}
+
+/* Item Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.popup-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.popup-close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.popup-close:hover {
+    transform: rotate(90deg);
+}
+
+.popup-content {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+}
+
+.popup-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    background-color: var(--item-bg);
+}
+
+.popup-description {
+    flex: 1;
+    color: var(--text-color);
+}
+
+/* Category Interaction Styles */
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-toggle {
+    transition: transform var(--transition-speed);
+}
+
+.category-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.category-content {
+    transition: max-height var(--transition-speed), opacity var(--transition-speed);
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.category-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Filter Styles */
+.filter-active {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+/* Responsive Popup */
+@media (max-width: 768px) {
+    .popup-content {
+        flex-direction: column;
+    }
+    
+    .popup-image {
+        width: 100%;
+        height: 200px;
+    }
 } 
