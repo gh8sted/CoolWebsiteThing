@@ -27,10 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Category toggle functionality
     document.querySelectorAll('.category-header').forEach(header => {
+        const toggle = header.querySelector('.category-toggle');
+        const content = header.nextElementSibling;
+        
+        // Add collapsed class to toggle by default
+        toggle.classList.add('collapsed');
+        
         header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const toggle = header.querySelector('.category-toggle');
-            content.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
             toggle.classList.toggle('collapsed');
         });
     });

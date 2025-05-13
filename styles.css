@@ -165,15 +165,57 @@ footer {
     min-width: 300px;
     max-width: 300px;
     padding: 1rem;
+    transition: all var(--transition-speed);
 }
 
 .category-header {
-    color: var(--text-color);
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color var(--transition-speed);
+}
+
+.category-header:hover {
+    background-color: var(--item-bg);
+}
+
+.category-toggle {
+    transition: transform var(--transition-speed);
+}
+
+.category-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.category-content {
+    transition: max-height var(--transition-speed), opacity var(--transition-speed), margin-top var(--transition-speed);
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.category-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+/* Make categories collapsed by default */
+.category-content {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.category-content.expanded {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 1rem;
 }
 
 .item-list {
@@ -302,35 +344,6 @@ footer {
 .popup-description {
     flex: 1;
     color: var(--text-color);
-}
-
-/* Category Interaction Styles */
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-.category-toggle {
-    transition: transform var(--transition-speed);
-}
-
-.category-toggle.collapsed {
-    transform: rotate(-90deg);
-}
-
-.category-content {
-    transition: max-height var(--transition-speed), opacity var(--transition-speed);
-    max-height: 1000px;
-    opacity: 1;
-    overflow: hidden;
-}
-
-.category-content.collapsed {
-    max-height: 0;
-    opacity: 0;
 }
 
 /* Filter Styles */
