@@ -14,19 +14,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme toggle functionality
     themeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
         body.classList.toggle('dark-mode');
-        
-        // Toggle icon
-        if (body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
+        icon.classList.toggle('fa-sun');
+        icon.classList.toggle('fa-moon');
+    });
+
+    // Wiki item interaction
+    const wikiItems = document.querySelectorAll('.wiki-item');
+    wikiItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Add a subtle animation when clicked
+            item.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                item.style.transform = '';
+            }, 100);
+
+            // Here you can add functionality to show item details
+            // For now, we'll just log the item name
+            console.log('Selected item:', item.textContent);
+        });
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
 
     // Intersection Observer for animations
